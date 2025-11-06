@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HMB: Future Maker</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* * E CSS Styling 
+     * 3D effects.
+    */
+
+    :root {
+      --primary-color: #3f6afc; /* Luminous Blue */
+      --secondary-color: #1a4a99; /* Deep Blue Accent */
+      --text-light: #e5e7eb;
+      --text-dark: #1f2937;
+      --background-main: #0c1524; /* Very Dark, Space-like Background */
+      --card-bg: rgba(255, 255, 255, 0.05); /* Semi-transparent background for Glassmorphism */
+      --border-light: rgba(255, 255, 255, 0.1);
+      --shadow-elite: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+      --transition-speed: 0.5s;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      /* Use Inter for a highly legible, modern feel */
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: var(--background-main);
+      color: var(--text-light);
+      line-height: 1.7;
+      scroll-behavior: smooth;
+    }
+
+    /* --- Header & Navigation (Elite Dark Mode) --- */
+
+    header {
+      background: rgba(12, 21, 36, 0.9); /* Slightly transparent dark background */
+      backdrop-filter: blur(10px); /* Glass effect on header */
+      padding: 15px 0;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 30px;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      font-weight: 900; /* Extra bold */
+      letter-spacing: 3px;
+      color: var(--primary-color);
+      text-transform: uppercase;
+    }
+    
+    header p {
+        font-size: 0.7rem;
+        margin-top: -8px;
+        opacity: 0.6;
+        letter-spacing: 1px;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 35px;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: var(--text-light);
+      font-weight: 500;
+      padding: 5px 0;
+      position: relative;
+      transition: color var(--transition-speed);
+    }
+    
+    nav ul li a:hover {
+        color: var(--primary-color);
+    }
+
+    /* Active indicator for nav */
+    nav ul li a::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0); /* Start hidden */
+        height: 2px;
+        background-color: var(--primary-color);
+        bottom: -8px;
+        left: 0;
+        transform-origin: bottom right;
+        transition: transform 0.3s ease-out;
+    }
+
+    nav ul li a:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+    }
+
+
+    /* --- Hero Section (Impactful Visuals) --- */
+
+    .hero {
+      height: 90vh; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      /* Advanced background gradient and subtle noise texture */
+      background: linear-gradient(rgba(12, 21, 36, 0.8), rgba(12, 21, 36, 0.8)), url('https://source.unsplash.com/1920x1080/?abstract,geometric') center/cover no-repeat;
+      background-attachment: fixed;
+      color: var(--text-light);
+      text-align: center;
+      flex-direction: column;
+      padding: 0 20px;
+    }
+
+    .hero h2 {
+      font-size: 6rem; /* Bigger impact */
+      margin-bottom: 25px;
+      font-weight: 900;
+      letter-spacing: -2px;
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(63, 106, 252, 0.4); /* Neon glow effect */
+    }
+
+    .hero p {
+      font-size: 1.8rem;
+      font-weight: 300;
+      margin-bottom: 40px;
+      opacity: 0.8;
+    }
+    
+    .hero-button {
+        background: var(--primary-color);
+        color: var(--background-main);
+        padding: 14px 40px;
+        border: 2px solid var(--primary-color);
+        border-radius: 4px;
+        text-transform: uppercase;
+        font-weight: 700;
+        letter-spacing: 2px;
+        cursor: pointer;
+        transition: all var(--transition-speed) ease-in-out;
+        text-decoration: none;
+        box-shadow: 0 0 15px rgba(63, 106, 252, 0.6);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .hero-button:hover {
+        background: transparent;
+        color: var(--primary-color);
+        box-shadow: 0 0 25px rgba(63, 106, 252, 0.9);
+        transform: scale(1.05);
+    }
+    
+    .hero-button i {
+        margin-left: 10px;
+    }
+
+
+    /* --- Section Styling (Depth & Cleanliness) --- */
+
+    section {
+      padding: 100px 30px;
+      max-width: 1300px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    
+    section h2 {
+        font-size: 3.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        color: var(--primary-color);
+    }
+    
+    section h2::after {
+        content: '';
+        display: block;
+        width: 100px;
+        height: 3px;
+        background: var(--primary-color);
+        box-shadow: 0 0 10px var(--primary-color);
+        margin: 10px auto 50px;
+        border-radius: 2px;
+    }
+
+    .about p {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: var(--text-light);
+      opacity: 0.85;
+      margin-bottom: 30px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: justify; /* Justify text for a formal look */
+    }
+    
+    /* Glassmorphism Card Effect */
+    .about .content-card {
+        background: var(--card-bg);
+        border-radius: 16px;
+        box-shadow: var(--shadow-elite);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid var(--border-light);
+        padding: 60px;
+        text-align: center;
+    }
+
+
+    /* --- Login Section (Neumorphic/Glass Form) --- */
+    
+    .login-container {
+        padding: 100px 30px; 
+        background: #08101e; /* Slight variation of dark background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-box {
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 16px;
+      box-shadow: var(--shadow-elite);
+      border: 1px solid var(--border-light);
+      padding: 50px;
+      width: 100%;
+      max-width: 400px;
+      text-align: left;
+      transition: transform var(--transition-speed);
+    }
+    
+    .login-box:hover {
+        transform: translateY(-5px);
+    }
+    
+    .login-box h2 {
+        text-align: center;
+        color: var(--primary-color);
+    }
+    
+    .login-box h2::after {
+        margin: 10px auto 40px;
+    }
+
+    .login-box label {
+        display: block;
+        margin-top: 20px;
+        margin-bottom: 8px;
+        font-weight: 500;
+        font-size: 1rem;
+        color: var(--text-light);
+        opacity: 0.9;
+    }
+
+    .login-box input {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 25px;
+      background: rgba(255, 255, 255, 0.05); /* Transparent input field */
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      font-size: 1rem;
+      color: var(--text-light);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    
+    .login-box input::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .login-box input:focus {
+        border-color: var(--primary-color);
+        outline: none;
+        box-shadow: 0 0 10px var(--primary-color);
+    }
+
+    .login-box button {
+      background: linear-gradient(90deg, #3f6afc, #8b5cf6); /* Vibrant, modern gradient */
+      color: var(--background-main);
+      padding: 15px;
+      border: none;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      font-weight: 700;
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .login-box button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(63, 106, 252, 0.5);
+    }
+
+
+    /* --- Footer --- */
+
+    footer {
+      background: #08101e;
+      color: var(--text-light);
+      text-align: center;
+      padding: 30px;
+      border-top: 1px solid var(--border-light);
+      font-size: 0.9rem;
+      opacity: 0.7;
+    }
+    
+    /* --- Responsive Adjustments --- */
+    @media (max-width: 992px) {
+        .hero h2 {
+            font-size: 4rem;
+        }
+        .hero p {
+            font-size: 1.4rem;
+        }
+    }
+    @media (max-width: 768px) {
+        .header-content {
+            flex-direction: column;
+        }
+        nav ul {
+            margin-top: 15px;
+            gap: 20px;
+        }
+        .hero {
+            height: 70vh;
+        }
+        .hero h2 {
+            font-size: 3rem;
+        }
+        section {
+            padding: 60px 15px;
+        }
+        .about .content-card {
+            padding: 30px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-content">
+        <div>
+            <h1>HMB TECHVERSE</h1>
+            <p>Web design & Data service</p>
+        </div>
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#login">Login</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h2>MAKE BEST WEBSITE</h2>
+    <p>Web design, Technology, and Data.</p>
+    <a href="#about" class="hero-button">
+        Explore Solutions <i class="fas fa-arrow-right"></i>
+    </a>
+  </section>
+
+  <section id="about" class="about">
+    <h2>Our Elite Commitment</h2>
+    <div class="content-card">
+        <p>
+          We believe the future is something we **engineer with precision**. Our mission is to inspire leaders and innovators to take decisive steps today that lead to systemic, global advancement tomorrow. Through proprietary knowledge, disruptive innovation, and strategic foresight, we empower organizations to build a world defined by limitless opportunity and technological excellence.
+        </p>
+        <p>
+          At HMB, we focus on **integrated, scalable solutions**. From promoting advanced data literacy and AI integration to fostering elite R&D and ethical governance, we are dedicated to transforming concepts into industry standards. Our goal is simple: to make the future not only brighter, but also **intelligent, secure, and strategically dominant**.
+        </p>
+        <p>
+          A better future is secured by the best minds. That's why our platform is built on the belief that **exclusive collaboration** drives unparalleled change. We bring together visionary founders, top-tier engineers, and global policymakers to exchange classified insights and drive groundbreaking action. Together, we can shape a future where innovation, impact, and sustained growth are secured for the elite few leading the way.
+        </p>
+    </div>
+  </section>
+
+  <section id="login" class="login-container">
+    <div class="login-box">
+      <h2>Authorized Access</h2>
+      <form>
+        <label for="username">System ID or Email</label>
+        <input type="text" id="username" placeholder="Enter your credentials" required>
+        
+        <label for="password">Secure Passkey</label>
+        <input type="password" id="password" placeholder="Enter your authorization code" required>
+        
+        <button type="submit">VALIDATE & ACCESS</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>created by Pratik</p>
+  </footer>
+
+</body>
+</html>
